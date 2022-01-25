@@ -1,5 +1,25 @@
-$bg_color: red;
+$bg_color: #151515;
 
-.App {
-    background: $bg_color;
-  }
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.app {
+  background: $bg_color;
+}
+
+.app__container {
+  padding: 85px;
+  margin: 0 auto;
+}
+
+.app__wrapper {
+  max-width: 1920px;
+  background: #fefefe;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04);
+  border-radius: 20px;
+}

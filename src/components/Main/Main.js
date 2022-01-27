@@ -3,27 +3,28 @@ import { useSelector, useDispatch,  } from 'react-redux';
 import style from './Main.module.scss';
 import { getGames } from '../../redux/actions/games';
 import GameList from './GameList/GameList';
-import axios from 'axios';
+import Preloader from '../Preloader/Preloader';
 
-const Main = () => {
+const Main = (props) => {
 
     const dispatch = useDispatch();
-    const games = useSelector(state => state.gamesPage.results)
+    const isFetching = useSelector(state => state.gamesPage.isFetching);
+    const games = useSelector(state => state.gamesPage.results);
+    // console.log(isFetching)
 
-    useEffect(() => {
-        dispatch(getGames())
-    }, [])
+    // useEffect(() => {
+    //     dispatch(getGames())
+    // }, [])
 
-    console.log(games)
+    // console.log(games)
 
 
 
     return (
         <div className={style.container}>
             <div className={style.flex_wrapper}>
-                
                 {games.map(game => 
-                    <GameList game={game} className={style.flex_item}/>
+                    <GameList game={game} isFetching={isFetching} className={style.flex_item}/>
                 )}
             </div>
         </div>

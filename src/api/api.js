@@ -6,7 +6,7 @@ const instance = axios.create({
 
 export const gamesAPI = {
     getGames() {
-        return instance.get(`page=1&page_size=20`)
+        return instance.get(`page=1&page_size=100`)
             .then(response => response.data);
     }
 }

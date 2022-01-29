@@ -8,6 +8,8 @@ import {
     FaLinux,
     FaNeos
 } from 'react-icons/fa';
+import GamePage from '../../GamePage/GamePage';
+import {Routes, Route, NavLink} from 'react-router-dom';
 
 const GameList = (props) => {
     const game = props.game;
@@ -50,7 +52,7 @@ const GameList = (props) => {
         })
     })
 
-    // console.log(game)
+    console.log(game)
     
     return (
         
@@ -69,7 +71,28 @@ const GameList = (props) => {
                         </div>
                     </div>
                     <div className={style.item__info__name}>
-                        <a href='/#'>{game.name}</a>
+                        <NavLink to={{
+                            pathname: `/games/${game.slug}`,
+                            state: {
+                                gamePage: game
+                                }
+                            }}>
+                            {game.name}
+                        </NavLink>
+                    </div>
+                    <div className={style.item__dropdown}>
+                        <ul>
+                            <li>
+                                <div className={style.game__card__about__term}>Release Date:</div>
+                                <div className={style.game__card__about__description}>{game.released}</div>
+                            </li>
+                            <li>
+                                <div className={style.game__card__about__term}> Genres:</div>
+                                <div className={style.game__card__about__description}>{game.genres.map(genre => {
+                                    return genre.name
+                                }).join(', ')}</div>
+                            </li>
+                        </ul>
                     </div>
                </div>
             </div>

@@ -1,4 +1,4 @@
-
+//media
 .item {
     border-radius: 12px;
     background-color: #202020;
@@ -8,7 +8,7 @@
     position: relative;
     &:hover {
         position: absolute;
-        width: 240px;
+        width: 15rem;
         height: 420px;
         transform: scale(1.03);
         transition: all .3s ease-in-out;
@@ -27,22 +27,22 @@
         justify-content: space-between;
     }
     .item__info {
-        padding: 5px 16px 24px;
+        padding: .3rem 1rem 1.5rem;
         color: #fff;
         height: 150px;
         &__metascore{
             color: #6dc849;
             font-weight: 700;
-            font-size: 16px;
-            padding: 0px 5px;
+            font-size: 1rem;
+            padding: 0 .3rem;
             text-align: center;
             border-radius: 4px;
             border: 1px solid #6dc849;
         }
         &__name{
-            font-size: 24px;
-            line-height: 28px;
-            padding-top: 15px;
+            font-size: 1.5rem;
+            line-height: 1.75rem;
+            padding-top: 1rem;
             a {
                 text-decoration: none;
                 color: #fff;
@@ -50,27 +50,27 @@
         }
     }
     .item__dropdown {
-        margin-top: 40px;
+        margin-top: 2.5rem;
         position: relative;
         bottom: 0;
-        top: 15px;
+        top: 1rem;
         ul {
             list-style-type: none;
             li {
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                padding: 10px 0;
+                padding: .6rem 0;
                 border-bottom: 1px solid #585858;
                 .game__card__about__term {
-                    font-size: 12px;
-                    line-height: 12px;
+                    font-size: .75rem;
+                    line-height: .75rem;
                     color: #585858;
                     text-align: left;
                 }
                 .game__card__about__description {
-                    font-size: 12px;
-                    line-height: 12px;
+                    font-size: .75rem;
+                    line-height: .75rem;
                     color: #fff;
                     text-align: right;
                 }

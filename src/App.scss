@@ -6,19 +6,41 @@ $bg_color: #151515;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-size: 16px;
+}
+
+html {
+  font-size: 12px;
+  @media (min-width: 800px) {
+    font-size: 14px;
+  }
+  @media (min-width: 1200px) {
+    font-size: 16px;
+  }
 }
 
 .app {
   background: $bg_color;
+  background-repeat: no-repeat; 
+  background-size: cover;
+  height: 100%;
 }
 
 .app__container {
-  padding: 85px;
+  padding: 2rem;
   margin: 0 auto;
+  @media (min-width: 600px) {
+    padding: 3rem;
+  }
+  @media (min-width: 800px) {
+    padding: 4rem;
+  }
+  @media (min-width: 1200px) {
+    padding: 5rem;
+  }
 }
 
 .app__wrapper {
-  max-width: 1920px;
   background: #fefefe;
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04);
   border-radius: 20px;

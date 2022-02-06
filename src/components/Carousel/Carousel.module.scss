@@ -1,0 +1,109 @@
+.carousel {
+    overflow: hidden;
+    width: 60%;
+    &__inner {
+        white-space: nowrap;
+        transition: transform .3s;
+    }
+    &__item {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+    &__image {
+        max-width: 100%;
+        height: auto;
+        margin-bottom: .5rem;
+    }
+    &__indicators {
+        display: flex;
+        justify-content: space-between;
+        > img {
+            width: 6.25rem;
+            height: 3.75rem;
+            object-fit: cover;
+            object-position: center;
+            border: .37rem solid transparent;
+            &.active {
+                position: relative;
+                border: .185rem solid #A0A0A0;
+                &::after {
+                    content: '';
+                    position: absolute;
+                    width: 0;
+                    height: 0;
+                    border: .6rem solid;
+                    border-color: #A0A0A0 transparent transparent transparent;
+                    top: 100%;
+                    left: 50%;
+                    margin-left: -.6rem;
+                }
+            }
+        }
+        .rightArrow, .leftArrow {
+            width: .6rem;
+            height: .6rem;
+            margin-top: 1.5rem;
+        }
+        .leftArrow {
+            border-top: .18rem solid gray;
+            border-left: .18rem  solid gray;
+            transform: rotate(-45deg);
+            margin-left: .6rem;
+        }
+        .rightArrow {
+            border-top: .18rem solid gray;
+            border-right: .18rem solid gray;
+            transform: rotate(45deg);
+            margin-right: .6rem;
+        }
+    }    
+}
+
+
+@media (max-width: 1100px){
+    .carousel {
+        width: 100%;
+        margin-bottom: 1.4rem;
+    }
+}
+
+@media (max-width: 700px){
+    .carousel__indicators > img{
+        width: 5rem;
+        height: 2.5rem;
+        border: none;
+    }
+    .carousel__indicators {
+        .rightArrow, .leftArrow {
+            width: .6rem;
+            height: .6rem;
+            margin-top: 1rem;
+        }
+    }      
+}
+
+@media (max-width: 600px){
+    .carousel__indicators > img{
+        width: 4rem;
+        height: 2rem;
+        border: none;
+    }
+    .carousel__indicators {
+        .rightArrow, .leftArrow {
+            width: .4rem;
+            height: .4rem;
+            margin-top: .8rem;
+        }
+    } 
+}
+
+@media (max-width: 500px){
+    .carousel__indicators > img{
+        width: 3rem;
+        height: 2rem;
+        border: none;
+    }  
+}
+
+

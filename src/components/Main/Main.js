@@ -1,14 +1,15 @@
-import React, { useEffect, useState, useCallback  } from 'react';
-import { useSelector, useDispatch,  } from 'react-redux';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import style from './Main.module.scss';
 import GameList from './GameList/GameList';
+import Preloader from '../Preloader/Preloader';
 
 const Main = (props) => {
 
-    const dispatch = useDispatch();
     const isFetching = useSelector(state => state.gamesPage.isFetching);
-    const games = useSelector(state => state.gamesPage.results);
+    const games = props.games
 
+    console.log('Main Component = ', games)
 
     return (
         <div className={style.container}>

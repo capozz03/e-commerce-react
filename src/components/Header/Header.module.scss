@@ -68,3 +68,25 @@ form {
     font-size: 1.5rem;
     border: none;
 }
+
+.dropdown {
+    &__container {
+        position: absolute;
+        top: 3rem; 
+        left: 0;
+        z-index: 15;
+        display: block;
+        height: auto;
+        width: 100%;
+        border-top: 1px solid hsla(0,0%,100%,.1);
+    }
+    &__content {
+        border-radius: 1.2rem;
+        padding: 0 16px;
+        margin: 0 0 10px;
+        background-color: #000;
+    }
+    &__item {
+        color: #fff;
+    }
+}

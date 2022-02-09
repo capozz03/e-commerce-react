@@ -1,29 +1,46 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import style from './GamePage.module.scss';
 import { useParams } from 'react-router';
 import { useSelector  } from 'react-redux';
 import Carousel, { CarouselItem } from '../Carousel/Carousel';
 import GameAvailability from './GameAvailability/GameAvailability';
 import { dateTransform } from './../../utils/dateTransform'
-import { iconsTransform } from '../../utils/iconsTransform';
 import WishlistBtn from '../../UI/WishlistBtn';
+import { getDetailsGame, getScreenshotsGame, getSameSeries} from '../../redux/actions/games';
+import { useDispatch } from 'react-redux';
+import { BackgroundContext } from '../../context';
+import Preloader from '../Preloader/Preloader';
 
-const GamePage = (props) => {
+const GamePage = () => {
 
-    const { gameSlug } = useParams();
+    const {updateBgImage} = useContext(BackgroundContext)
 
+    const {gameSlug} = useParams();
+    const dispatch = useDispatch();
     const gameDetails = useSelector(state => state.gamesPage.gameDetails);
+    const isFetching = useSelector(state => state.gamesPage.isFetching);
+
 
     useEffect(() => {
-        props.updateGameDetails(gameSlug, gameDetails.background_image)
-    }, [gameSlug, props, gameDetails.background_image])
+        dispatch(getDetailsGame(gameSlug))
+        dispatch(getScreenshotsGame(gameSlug))
+        dispatch(getSameSeries(gameSlug))
+    }, [gameSlug])
 
+    useEffect(() => {
+        updateBgImage(gameDetails.background_image)
+    }, [gameDetails.background_image])
+    
 
     const screenshots = useSelector(state => state.gamesPage.screenshots);
 
-    console.log(gameDetails)
     const gameSameSeries = useSelector(state => state.gamesPage.gameSameSeries);
-    console.log(gameSameSeries)
+
+    console.log(isFetching)
+
+    if (isFetching) {
+        return <Preloader/>
+    }
 
     return (
         <div className={style.game}>
@@ -74,10 +91,7 @@ const GamePage = (props) => {
                 </div>
                 <WishlistBtn/>
             </div>
-            
-  
-        </div>
-        
+        </div>    
     );
 };
 

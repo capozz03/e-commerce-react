@@ -2,10 +2,15 @@ import React, { useEffect, useState } from 'react';
 import style from './Header.module.scss';
 import { FaRegHeart, FaSearch } from 'react-icons/fa';
 import {Link} from 'react-router-dom';
+import { useNavigate } from 'react-router';
+import { useSelector } from 'react-redux';
+import { useGames } from '../../hooks/useGames';
 
-const Header = (props) => {
-    
-    const data = props.games.map(item => item.name);
+const Header = () => {
+
+    const games = useSelector(state => state.gamesPage.games);
+
+    const navigate = useNavigate();
 
     const [searchTerm, setSearchTerm] = useState("");
     const [searchResults, setSearchResults] = useState([]);
@@ -13,10 +18,11 @@ const Header = (props) => {
     const handleChange = (event) => {
         setSearchTerm(event.target.value);
     };
-    console.log(searchTerm)
+
+
     useEffect(() => {
-        const results = data.filter(game =>
-            game.toLowerCase().includes(searchTerm)
+        const results = games.filter(game =>
+            game.name.toLowerCase().includes(searchTerm)
         );
         setSearchResults(results);
     }, [searchTerm]);
@@ -25,19 +31,31 @@ const Header = (props) => {
         <header>
             <div className={style.flex_wrapper}>
                 <Link className={style.navLink} to="/"><div className={style.logo}>PAWG</div></Link>
-                {/* {searchTerm === null ? null :
-                <ul>
-                {searchResults.map(item => (
-                <li>{item}</li>
-                ))}
-            </ul>} */}
-                
                 <form>
                     <input 
-                    type="text" 
-                    placeholder="Search"
-                    onChange={handleChange}
-                    value={searchTerm}/>
+                        type="text" 
+                        placeholder="Search"
+                        onChange={handleChange}
+                        value={searchTerm}
+                    />
+                    {!searchTerm ? null :
+                        <div className={style.dropdown__container}>
+                            <div className={style.dropdown__content}>
+                                {searchResults.map(item => (
+                                    <div 
+                                        className={style.dropdown__item}
+                                        onClick={() => {
+                                            navigate(`/games/${item.slug}`)
+                                            setSearchResults([])
+                                            setSearchTerm("")
+                                        }}
+                                        >
+                                        {item.name}
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    }
                     <button type="submit"> <FaSearch /> </button>
                 </form>
                 <button type="submit" className={style.wishList}> <FaRegHeart /> </button>

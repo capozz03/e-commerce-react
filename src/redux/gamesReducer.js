@@ -5,22 +5,27 @@ const SET_SCREENSHOTS_GAME = 'SET_SCREENSHOTS_GAME';
 const SET_BACKGROUND_IMAGE = 'SET_BACKGROUND_IMAGE';
 const SET_DETAILS_GAME = 'SET_DETAILS_GAME';
 const SET_SAME_SERIES_GAME = 'SET_SAME_SERIES_GAME';
+const SET_ERROR = 'SET_ERROR';
 
 let initialState = {
-    isFetching: true,
+    isFetching: false,
+    gamesCount: 20,
+    totalCount: 100,
     games: [],
     screenshots: [],
     background: null,
     gameDetails: [],
-    gameSameSeries: [1]
+    gameSameSeries: [],
+    error: ''
 };
 
 const gameReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_GAMES: {
             return { 
-                ...state, 
-                games: action.payload.results
+                ...state,
+                games: action.payload.results,
+                totalCount: action.payload.count
             }
         }
         case SET_SCREENSHOTS_GAME: {
@@ -53,6 +58,12 @@ const gameReducer = (state = initialState, action) => {
                 isFetching: action.isFetching
             }
         }
+        case SET_ERROR: {
+            return { 
+                ...state, 
+                error: action.error
+            }
+        }
         default:
             return state;
     }
@@ -65,6 +76,7 @@ export const setSameSeriesGame = (gameSameSeries) => ({ type: SET_SAME_SERIES_GA
 
 export const toggleIsFetching = (isFetching) => ({ type: TOGGLE_IS_FETCHING, isFetching})
 export const backgroundImage = (background) => ({ type: SET_BACKGROUND_IMAGE, background})
+export const fetchError = (error) => ({ type: SET_ERROR, error})
 
 
 export default gameReducer;

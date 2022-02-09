@@ -5,20 +5,20 @@ const instance = axios.create({
 });
 
 export const gamesAPI = {
-    getGames() {
-        return instance.get(`games?key=5de003dc2c4248469ba11b8d1aee9e11&page=1&page_size=40`)
-            .then(response => response.data);
+    async getGames(page = 1, ordering='released') {
+        const response = await instance.get(`games?key=5de003dc2c4248469ba11b8d1aee9e11&page=${page}&page_size=20&ordering=${ordering}`)
+        return response
     },
-    getScreenshotsGame(gameSlug) {
-        return instance.get(`games/${gameSlug}/screenshots?key=5de003dc2c4248469ba11b8d1aee9e11`)
-            .then(response => response.data);
+    async getScreenshotsGame(gameSlug) {
+        const response = await instance.get(`games/${gameSlug}/screenshots?key=5de003dc2c4248469ba11b8d1aee9e11`)
+        return response
     },
-    getDetailsGame(gameSlug) {
-        return instance.get(`games/${gameSlug}?key=5de003dc2c4248469ba11b8d1aee9e11`)
-            .then(response => response.data);
+    async getDetailsGame(gameSlug) {
+        const response = await instance.get(`games/${gameSlug}?key=5de003dc2c4248469ba11b8d1aee9e11`)
+        return response
     },
-    getSameSeries(gameSlug) {
-        return instance.get(`games/${gameSlug}/game-series?key=5de003dc2c4248469ba11b8d1aee9e11`)
-            .then(response => response.data);
+    async getSameSeries(gameSlug) {
+        const response = await instance.get(`games/${gameSlug}/game-series?key=5de003dc2c4248469ba11b8d1aee9e11`)
+        return response
     }
 }

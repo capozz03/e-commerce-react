@@ -1,6 +1,7 @@
 .btn {
     cursor: pointer;
     overflow: hidden;
+    margin: 0 auto;
     &__wishlist {
         display: flex;
         align-items: center;

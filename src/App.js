@@ -1,13 +1,12 @@
 import './App.scss';
 import React, {useEffect, useState} from 'react';
 import { useSelector, useDispatch  } from 'react-redux';
-import {Routes, Route} from 'react-router-dom';
+import {Routes, Route, Navigate} from 'react-router-dom';
 import Main from './components/Main/Main';
 import Header from './components/Header/Header';
-import { getGames, getScreenshotsGame, getDetailsGame, getSameSeries } from './redux/actions/games';
-import Preloader from './components/Preloader/Preloader';
-import GamePage from './components/GamePage/GamePage';
 import { useLocation } from 'react-router';
+import AppRouter from './components/AppRouter/AppRouter';
+import { BackgroundContext } from './context';
 
 function App() {
 
@@ -24,57 +23,34 @@ function App() {
   console.log('App Component screen = ', screenshots)
   console.log('App Component gameDetails = ', gameDetails)
 
-  
-  useEffect(() => {
-    dispatch(getGames())
-  }, [])
+  const [bgImage, setBgImage] = useState(null);
 
-
-  const [gameSlug, setGameSlug] = useState('');
-  const [background, setBackground] = useState('');
-
-  const updateGameDetails = (gameSlug, background) => {
-    setGameSlug(gameSlug)
-    setBackground(background)
+  const updateBgImage = (image) => {
+    setBgImage(image)
   };
 
-  useEffect(() => {
-    dispatch(getScreenshotsGame(gameSlug))
-  }, [gameSlug, dispatch])
-
-  useEffect(() => {
-    dispatch(getDetailsGame(gameSlug))
-}, [dispatch, gameSlug])
-
-  useEffect(() => {
-    dispatch(getSameSeries(gameSlug))
-  }, [dispatch, gameSlug])
-
-  console.log(gameSameSeries)
-
-  if (isFetching) {
-    return <Preloader/>
-  }
 
   return (
-    <div className="app" 
-      style={ 
-        location.pathname !== '/' 
-        ? { backgroundImage: `linear-gradient(180deg, transparent 0%, #151515 40%), url(${background})`, 
-            backgroundBlendMode: 'overlay'}
-        : {background: '#151515'}
-        }>
-      <div className="app__container">
-        
-        <div className="app__wrapper">
-          <Header games={games}/>
-          <Routes>
-            <Route exact path="/" element={ <Main games={games}/> } />
-            <Route path="/games/:gameSlug" element={ <GamePage updateGameDetails={updateGameDetails}/> }/>
-          </Routes>
+    <BackgroundContext.Provider value={{
+      updateBgImage
+    }}>
+      <div className="app" 
+        style={ 
+          bgImage && location.pathname !== '/games'
+          ? { backgroundImage: `linear-gradient(180deg, transparent 0%, #151515 40%), url(${bgImage})`, 
+              backgroundBlendMode: 'overlay'}
+          : {background: '#151515'}
+          }>
+        <div className="app__container">
+          
+          <div className="app__wrapper">
+            <Header/>
+            <AppRouter/>
+          </div>
         </div>
       </div>
-    </div>
+    </BackgroundContext.Provider>
+    
   );
 }
 

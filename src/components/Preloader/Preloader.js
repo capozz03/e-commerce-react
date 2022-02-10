@@ -1,19 +1,14 @@
 import React from 'react';
-import style from './Preloader.scss';
+import style from './Preloader.module.scss';
 
-const Preloader = () => {
+const Shimmer = () => {
     return (
-        <div id="cube-loader">
-            <div className="caption">
-                <div className="cube-loader">
-                    <div className="cube loader-1"></div>
-                    <div className="cube loader-2"></div>
-                    <div className="cube loader-4"></div>
-                    <div className="cube loader-3"></div>
-                </div>
-            </div>
+        <div className={style.preloader__container}>
+            <div className={style.ldsDualRing}></div>
         </div>
+        
+        
     );
 };
 
-export default Preloader;
+export default Shimmer;

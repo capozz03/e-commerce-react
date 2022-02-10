@@ -5,7 +5,7 @@ const instance = axios.create({
 });
 
 export const gamesAPI = {
-    async getGames(page = 1, ordering='released') {
+    async getGames(page = 1, ordering = 'relevance') {
         const response = await instance.get(`games?key=5de003dc2c4248469ba11b8d1aee9e11&page=${page}&page_size=20&ordering=${ordering}`)
         return response
     },
@@ -19,6 +19,10 @@ export const gamesAPI = {
     },
     async getSameSeries(gameSlug) {
         const response = await instance.get(`games/${gameSlug}/game-series?key=5de003dc2c4248469ba11b8d1aee9e11`)
+        return response
+    },
+    async getSearchGames(page = 1, search) {
+        const response = await instance.get(`games?key=5de003dc2c4248469ba11b8d1aee9e11&page=${page}&page_size=20&search=${search}`)
         return response
     }
 }

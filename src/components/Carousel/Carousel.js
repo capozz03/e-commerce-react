@@ -44,6 +44,7 @@ const Carousel = ({ children, screenshots }) => {
                 {screenshots.map((item, index) => {
                     return (
                         <img
+                            key={item.image}
                             src={item.image}
                             className={`${index === activeIndex ? style.active : null }`}
                             onClick={() => {

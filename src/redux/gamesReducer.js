@@ -1,19 +1,23 @@
 
 const SET_GAMES = 'SET_GAMES';
 const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
+const TOGGLE_IS_FILTERING = 'TOGGLE_IS_FILTERING';
+const TOGGLE_IS_SEARCHING = 'TOGGLE_IS_SEARCHING';
 const SET_SCREENSHOTS_GAME = 'SET_SCREENSHOTS_GAME';
-const SET_BACKGROUND_IMAGE = 'SET_BACKGROUND_IMAGE';
 const SET_DETAILS_GAME = 'SET_DETAILS_GAME';
 const SET_SAME_SERIES_GAME = 'SET_SAME_SERIES_GAME';
 const SET_ERROR = 'SET_ERROR';
+const SET_FILTER_GAMES = 'SET_FILTER_GAMES';
+const SET_SEARCH_GAMES = 'SET_SEARCH_GAMES';
 
 let initialState = {
     isFetching: false,
-    gamesCount: 20,
+    isFiltering: false,
+    isSearching: false,
     totalCount: 100,
     games: [],
+    searchGames: [],
     screenshots: [],
-    background: null,
     gameDetails: [],
     gameSameSeries: [],
     error: ''
@@ -24,20 +28,27 @@ const gameReducer = (state = initialState, action) => {
         case SET_GAMES: {
             return { 
                 ...state,
-                games: action.payload.results,
+                games: [...state.games, ...action.payload.results],
                 totalCount: action.payload.count
+            }
+        }
+        case SET_FILTER_GAMES: {
+            return { 
+                ...state,
+                games: action.payload.results,
+            }
+        }
+        case SET_SEARCH_GAMES: {
+            return { 
+                ...state,
+                searchGames: action.payload.results,
+                // searchQuery: [...state.games, ...action.payload.results],
             }
         }
         case SET_SCREENSHOTS_GAME: {
             return { 
                 ...state, 
                 screenshots: action.payload.results
-            }
-        }
-        case SET_BACKGROUND_IMAGE: {
-            return { 
-                ...state, 
-                background: action.background
             }
         }
         case SET_DETAILS_GAME: {
@@ -58,6 +69,18 @@ const gameReducer = (state = initialState, action) => {
                 isFetching: action.isFetching
             }
         }
+        case TOGGLE_IS_FILTERING: {
+            return { 
+                ...state, 
+                isFiltering: action.isFiltering
+            }
+        }
+        case TOGGLE_IS_SEARCHING: {
+            return { 
+                ...state, 
+                isSearching: action.isSearching
+            }
+        }
         case SET_ERROR: {
             return { 
                 ...state, 
@@ -75,8 +98,13 @@ export const setDetailsGame = (gameDetails) => ({ type: SET_DETAILS_GAME, gameDe
 export const setSameSeriesGame = (gameSameSeries) => ({ type: SET_SAME_SERIES_GAME, payload: gameSameSeries })
 
 export const toggleIsFetching = (isFetching) => ({ type: TOGGLE_IS_FETCHING, isFetching})
-export const backgroundImage = (background) => ({ type: SET_BACKGROUND_IMAGE, background})
+export const toggleIsFiltering = (isFiltering) => ({ type: TOGGLE_IS_FILTERING, isFiltering}) 
+export const toggleIsSearching = (isSearching) => ({ type: TOGGLE_IS_SEARCHING, isSearching}) 
 export const fetchError = (error) => ({ type: SET_ERROR, error})
+
+export const setFilterGames = (games) => ({ type: SET_FILTER_GAMES, payload: games })
+export const setSearchGames = (searchGames) => ({ type: SET_SEARCH_GAMES, payload: searchGames })
+
 
 
 export default gameReducer;

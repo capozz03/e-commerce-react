@@ -1,9 +1,8 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import style from './GameList.module.scss';
 import {useNavigate} from 'react-router-dom';
 import { iconsTransform } from '../../../utils/iconsTransform';
 import { dateTransform } from '../../../utils/dateTransform';
-import { useSelector } from 'react-redux';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 

@@ -63,7 +63,7 @@ const GamePage = () => {
                 <Carousel screenshots={screenshots}>
                     {screenshots.map((item) => {
                         return (
-                            <CarouselItem children={item.image}/>
+                            <CarouselItem key={item.image} children={item.image}/>
                         )
                     })}
                 </Carousel>

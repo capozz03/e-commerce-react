@@ -7,14 +7,12 @@ const AppRouter = () => {
         <Routes>
             {routes.map(route => 
                 <Route
+                    key={route.path}
                     path={route.path}
                     element={route.element}
                 />
             )}
             <Route path='*' element={<Navigate to='/games' />}/> 
-            {/* <Route exact path="/" element={ <Main games={games}/> } />
-            <Route path="/games/:gameSlug" element={ <GamePage updateGameDetails={updateGameDetails}/> }/>
-            */}
         </Routes>
     );
 };

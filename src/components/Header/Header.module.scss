@@ -64,9 +64,16 @@ form {
 
 .wishList {
     cursor: pointer;
-    background: transparent;
-    font-size: 1.5rem;
-    border: none;
+    h2 {
+        position: relative;
+        color:#6dc849
+    }
+    span {
+        position: absolute;
+        top: 10px;
+        left: 20px;
+        color: #6dc849
+    }
 }
 
 .dropdown {
@@ -88,5 +95,9 @@ form {
     }
     &__item {
         color: #fff;
+        cursor: pointer;
+        &:hover {
+            text-decoration: underline;
+        }
     }
 }

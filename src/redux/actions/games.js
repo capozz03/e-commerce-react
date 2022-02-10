@@ -1,4 +1,14 @@
-import { setGames, toggleIsFetching, setScreenshotsGame, setDetailsGame, setSameSeriesGame, fetchError } from "../gamesReducer";
+import { setGames, 
+    toggleIsFetching, 
+    toggleIsFiltering, 
+    setScreenshotsGame, 
+    setDetailsGame, 
+    setSameSeriesGame, 
+    fetchError, 
+    setFilterGames,
+    setSearchGames,
+    toggleIsSearching
+} from "../gamesReducer";
 import { gamesAPI } from "../../api/api";
 
 export const getGames = (page, ordering) => {
@@ -16,6 +26,35 @@ export const getGames = (page, ordering) => {
     }
 }
 
+export const getFilterGames = (page, ordering) => {
+    return async (dispatch) => {
+
+        dispatch(toggleIsFiltering(true));
+        gamesAPI.getGames(page, ordering)
+            .then(resp => {
+                dispatch(setFilterGames(resp.data));  
+                dispatch(toggleIsFiltering(false));              
+            })
+            .catch(err => {
+                dispatch(fetchError(err.message))
+            })
+    }
+}
+
+export const getSearchGames = (page, ordering) => {
+    return async (dispatch) => {
+
+        dispatch(toggleIsSearching(true));
+        gamesAPI.getSearchGames(page, ordering)
+            .then(resp => {
+                dispatch(setSearchGames(resp.data));  
+                dispatch(toggleIsSearching(false));              
+            })
+            .catch(err => {
+                dispatch(fetchError(err.message))
+            })
+    }
+}
 
 export const getDetailsGame = (gameSlug) => {
     return async (dispatch) => {

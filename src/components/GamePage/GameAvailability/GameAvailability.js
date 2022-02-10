@@ -23,6 +23,7 @@ export const GameAvailabilityItemArr = ({availability}) => {
 }
 
 export const GameAvailabilityItemNotArr = ({availability}) => {
+    if (!availability[1]) return null
     return (
         <div className={style.game__availability__flex__item}>
             <div className={style.game__availability__heading}>
@@ -46,11 +47,11 @@ const GameAvailability = (props) => {
                 {gameAvailabilities.map(availability => {
                     if (Array.isArray(availability[1])) {
                         return (
-                            <GameAvailabilityItemArr availability={availability}/>
+                            <GameAvailabilityItemArr key={availability[0]} availability={availability}/>
                         )
                     } else {
                         return (
-                            <GameAvailabilityItemNotArr availability={availability}/>
+                            <GameAvailabilityItemNotArr key={availability[0]} availability={availability}/>
                         )
                     }
                 })}

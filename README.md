@@ -1,7 +1,7 @@
 <h1 align="center">Test task "GamePortal"</h1>
 
 ![HEADER](./readme_assets/header_rdm.png)
-<h1 align="center"><a href="https://capozz03.github.io/game-portal-react/games" target="_blank">LIVE DEMO</a> 
+<h1 align="center"><a href="https://capozz03.github.io/game-portal-react" target="_blank">LIVE DEMO</a> 
 
 ## Description
 

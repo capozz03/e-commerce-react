@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/game-portal-react/static/css/main.f960e31d.css",
+    "main.js": "/game-portal-react/static/js/main.10243999.js",
+    "static/js/787.23170c61.chunk.js": "/game-portal-react/static/js/787.23170c61.chunk.js",
+    "index.html": "/game-portal-react/index.html",
+    "main.f960e31d.css.map": "/game-portal-react/static/css/main.f960e31d.css.map",
+    "main.10243999.js.map": "/game-portal-react/static/js/main.10243999.js.map",
+    "787.23170c61.chunk.js.map": "/game-portal-react/static/js/787.23170c61.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f960e31d.css",
+    "static/js/main.10243999.js"
+  ]
+}

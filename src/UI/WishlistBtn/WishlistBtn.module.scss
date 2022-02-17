@@ -1,4 +1,5 @@
 .btn {
+    display: flex;
     cursor: pointer;
     overflow: hidden;
     margin: 0 auto;
@@ -7,6 +8,7 @@
         align-items: center;
         color: #fff;
         background-color: #151515;
+        border: 2px solid #151515;
         border-radius: 6px;
         padding: .3rem 0 .3rem 1rem;
         transition: background-color .3s;
@@ -14,6 +16,23 @@
         width: 100%;
         &:hover {
             background-color: #333333;
+            border: 2px solid #333333;
+        }
+        &__clicked {
+            display: flex;
+            align-items: center;
+            color: #fff;
+            background-color: #46b11b;
+            border-radius: 6px;
+            padding: .3rem 0 .3rem 1rem;
+            transition: background-color .3s;
+            height: 3rem;
+            width: 100%;
+            border: 2px solid #338115;
+            &:hover {
+                background-color: #338115;
+                border: 2px solid #338115;
+            }
         }
         &__subtitle {
             font-size: .75rem;
@@ -25,7 +44,7 @@
             line-height: 1.125rem;
         }
         &__container__icon {
-            margin-left: .6rem;
+            margin-left: 4.5rem;
             width: 1.9rem;
             height: 3rem;
             overflow: hidden

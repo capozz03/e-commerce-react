@@ -1,4 +1,3 @@
-
 const SET_GAMES = 'SET_GAMES';
 const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
 const TOGGLE_IS_FILTERING = 'TOGGLE_IS_FILTERING';
@@ -9,6 +8,7 @@ const SET_SAME_SERIES_GAME = 'SET_SAME_SERIES_GAME';
 const SET_ERROR = 'SET_ERROR';
 const SET_FILTER_GAMES = 'SET_FILTER_GAMES';
 const SET_SEARCH_GAMES = 'SET_SEARCH_GAMES';
+const SET_STORES_GAME = 'SET_STORES_GAME';
 
 let initialState = {
     isFetching: false,
@@ -19,6 +19,7 @@ let initialState = {
     searchGames: [],
     screenshots: [],
     gameDetails: [],
+    gameStores: [],
     gameSameSeries: [],
     error: ''
 };
@@ -42,7 +43,6 @@ const gameReducer = (state = initialState, action) => {
             return { 
                 ...state,
                 searchGames: action.payload.results,
-                // searchQuery: [...state.games, ...action.payload.results],
             }
         }
         case SET_SCREENSHOTS_GAME: {
@@ -55,6 +55,12 @@ const gameReducer = (state = initialState, action) => {
             return { 
                 ...state, 
                 gameDetails: action.gameDetails,
+            }
+        }
+        case SET_STORES_GAME: {
+            return { 
+                ...state, 
+                gameStores: action.payload.results,
             }
         }
         case SET_SAME_SERIES_GAME: {
@@ -104,7 +110,7 @@ export const fetchError = (error) => ({ type: SET_ERROR, error})
 
 export const setFilterGames = (games) => ({ type: SET_FILTER_GAMES, payload: games })
 export const setSearchGames = (searchGames) => ({ type: SET_SEARCH_GAMES, payload: searchGames })
-
+export const setStoresGame = (storesGame) => ({ type: SET_STORES_GAME, payload: storesGame })
 
 
 export default gameReducer;

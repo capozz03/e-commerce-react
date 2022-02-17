@@ -1,9 +1,9 @@
 import React, {useEffect, useRef, useState} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import style from './Main.module.scss';
-import GameList from './GameList/GameList';
+import GameList from '../../components/GameList/GameList';
 import { getFilterGames, getGames } from '../../redux/actions/games';
-import Preloader from '../Preloader/Preloader';
+import Preloader from '../../components/Preloader/Preloader';
 import { useObserver } from '../../hooks/useObserver';
 import SelectBtn from '../../UI/SelectBtn/SelectBtn';
 import { getPageCount } from '../../utils/getPageCount';
@@ -12,24 +12,21 @@ import { getPageCount } from '../../utils/getPageCount';
 const Main = () => {
 
     const dispatch = useDispatch();
+
     const isFetching = useSelector(state => state.gamesPage.isFetching);
     const isFiltering = useSelector(state => state.gamesPage.isFiltering);
     const games = useSelector(state => state.gamesPage.games);
-
     const error = useSelector(state => state.gamesPage.error);
     const totalCount = useSelector(state => state.gamesPage.totalCount);
+
     const observer = useRef();
 
     const [page, setPage] = useState(1);
     const totalPages = getPageCount(totalCount, 20);
 
-    console.log(totalPages)
-
     const [filter, setFilter] = useState('')
-
  
     useObserver(observer, page < totalPages, isFetching, () => {
-        console.log("Сработал useObserver")
         setPage(page + 1);
         dispatch(getGames(page, filter))
     })
@@ -43,6 +40,12 @@ const Main = () => {
         setFilter(selectedSort)
     }
 
+    const options = [
+        {value: '-relevance', name: 'Relevance'},
+        {value: '-released', name: 'Release date'},
+        {value: 'rating', name: 'Average Rating'},
+    ]
+
     return (
         <div className={style.container}>
             {error &&
@@ -52,11 +55,7 @@ const Main = () => {
                 value={filter}
                 onChange={onChangeFilter}
                 defaultValue="Ordering by:"
-                options={[
-                    {value: '-relevance', name: 'Relevance'},
-                    {value: '-released', name: 'Release date'},
-                    {value: 'rating', name: 'Average Rating'},
-                ]}
+                options={options}
             />
             {isFiltering 
                 ?

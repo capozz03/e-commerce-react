@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router';
 import style from './GameAvailability.module.scss';
 
 export const GameAvailabilityItemArr = ({availability}) => {
@@ -39,7 +40,13 @@ export const GameAvailabilityItemNotArr = ({availability}) => {
 const GameAvailability = (props) => {
 
     const gameAvailabilities = Object.entries(props);
-    console.log(gameAvailabilities)
+    const navigate = useNavigate();
+
+    let otherGames = gameAvailabilities.pop();
+
+    const toOtherGame = () => {
+        
+    }
 
     return (
         <div className={style.game__availability}>
@@ -55,6 +62,24 @@ const GameAvailability = (props) => {
                         )
                     }
                 })}
+            </div>
+            <div className={style.game__availability__otherGames}>
+                {otherGames[1].length &&
+                    <div className={style.game__availability__flex__item}>
+                        <div className={style.game__availability__heading}>
+                            Other games in the series
+                        </div>
+                        {otherGames[1].map(el => 
+                            <div
+                                key={el.id}
+                                className={style.game__availability__description__otherGames}
+                                onClick={() => navigate(`/games/${el.slug}`)}
+                            >
+                                {el.name}
+                            </div>
+                        )}  
+                    </div>
+                }
             </div>
         </div>
     );

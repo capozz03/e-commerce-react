@@ -4,6 +4,7 @@ import Header from './components/Header/Header';
 import { useLocation } from 'react-router';
 import AppRouter from './components/AppRouter/AppRouter';
 import { BackgroundContext } from './context';
+import { checkLocalStorageKeys } from './utils/checkLocalStorageKeys';
 
 function App() {
 
@@ -11,12 +12,10 @@ function App() {
 
   const [bgImage, setBgImage] = useState(null);
 
-  const [wishlistCount, setWishlistCount] = useState(1);
+  const countGamesInWishlist = checkLocalStorageKeys().length
 
-  const updateWishlistCount = (wishlist) => {
-    setWishlistCount(wishlistCount => wishlistCount + wishlist)
-    console.log(wishlistCount)
-  }
+  const [wishlistCount, setWishlistCount] = useState(countGamesInWishlist);
+
 
   const updateBgImage = (image) => {
     setBgImage(image)
@@ -37,7 +36,7 @@ function App() {
 
 
   return (
-    <BackgroundContext.Provider value={{updateBgImage, updateWishlistCount, wishlistCount}}>
+    <BackgroundContext.Provider value={{updateBgImage, wishlistCount, setWishlistCount}}>
       <div className="app" 
         style={
           bgImage && location.pathname !== '/games'

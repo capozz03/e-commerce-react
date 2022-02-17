@@ -1,11 +1,14 @@
 import React, { Children, cloneElement, useState }  from 'react';
 import style from './Carousel.module.scss';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
+import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
 
 export const CarouselItem = ({ children }) => {
     return (
         <div className={style.carousel__item}>
             <div className={style.wrapper}>
-                <img src={children} alt='img' className={style.carousel__image}/>
+                <LazyLoadImage effect='blur' src={children} alt='img' className={style.carousel__image}/>
             </div>
         </div>
     );
@@ -22,7 +25,6 @@ const Carousel = ({ children, screenshots }) => {
         } else if (newIndex >= Children.count(children)) {
             newIndex = 0;
         }
-
         setActiveIndex(newIndex)
     }
 
@@ -33,36 +35,38 @@ const Carousel = ({ children, screenshots }) => {
                     return cloneElement(child);
                 })}
             </div>
-            <div className={style.carousel__indicators}>
-                <div
-                    className={style.leftArrow}
-                    onClick={() => {
-                        updateIndex(activeIndex - 1)
-                    }}
-                >
+            {screenshots.length &&
+                <div className={style.carousel__indicators}>
+                    <FaAngleLeft
+                        className={style.leftArrow}
+                        onClick={() => {
+                            updateIndex(activeIndex - 1)
+                        }}
+                    >
+                    </FaAngleLeft>
+                    {screenshots.map((item, index) => {
+                        return (
+                            <img
+                                key={item.image}
+                                src={item.image}
+                                className={`${index === activeIndex ? style.img__active : style.img }`}
+                                onClick={() => {
+                                    updateIndex(index)
+                                }}
+                                alt='img'
+                            />
+    
+                        );
+                    })}
+                    <FaAngleRight
+                        className={style.rightArrow}
+                        onClick={() => {
+                            updateIndex(activeIndex + 1)
+                        }}
+                    >
+                    </FaAngleRight>
                 </div>
-                {screenshots.map((item, index) => {
-                    return (
-                        <img
-                            key={item.image}
-                            src={item.image}
-                            className={`${index === activeIndex ? style.active : null }`}
-                            onClick={() => {
-                                updateIndex(index)
-                            }}
-                            alt='img'
-                        />
-   
-                    );
-                })}
-                <div
-                    className={style.rightArrow}
-                    onClick={() => {
-                        updateIndex(activeIndex + 1)
-                    }}
-                >
-                </div>
-            </div>
+            }
         </div>
     );
 };

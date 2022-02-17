@@ -21,6 +21,18 @@
     &__description {
         line-height: 1.2rem;
         font-size: .9rem;
+        &__otherGames {
+            line-height: 1.2rem;
+            font-size: .9rem;
+            text-decoration: underline;
+            cursor: pointer;
+            &:hover {
+                color: #919191;
+            }
+        }
+    }
+    &__otherGames {
+        margin-top: 1rem;
     }
 }
 

@@ -14,9 +14,13 @@ This is a game portal where you can view the games you are interested in, sort t
 - In this project it is used Intersection Observer API for endless pagination of game cards.
 - Various UI libraries were not used to implement infinite scrolling.
 
+![OBSERVER](./readme_assets/observer.gif)
+
 ### Searching and filtering
 - The search for games is carried out using a custom useDebounce hook, which reduces the number of requests to the server.
 - Sorting by games is carried out through requests from the server and changes every time the user's filter changes.
+
+![OBSERVER](./readme_assets/search.gif)
 
 ### Wishlist
 - Adding games to the desired list is done via localstorage.

@@ -45,6 +45,10 @@
             font-size: 1.5rem;
             line-height: 1.75rem;
             padding-top: 1rem;
+            transition: .1s ease-in;
+            &:hover {
+                color: #818181
+            }
             a {
                 text-decoration: none;
                 color: #fff;

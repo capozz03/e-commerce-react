@@ -1,8 +1,8 @@
 import React from 'react';
 import style from './GameList.module.scss';
 import {useNavigate} from 'react-router-dom';
-import { iconsTransform } from '../../../utils/iconsTransform';
-import { dateTransform } from '../../../utils/dateTransform';
+import { iconsTransform } from '../../utils/iconsTransform';
+import { dateTransform } from '../../utils/dateTransform';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 
@@ -28,15 +28,11 @@ const GameList = ({ game }) => {
                         <div className={style.item__info__meta}>
                             {iconsTransform(game.parent_platforms)}
                         </div>
-                        {game.metacritic 
-                            ? 
+                        {!game.metacritic ? null :
                             <div className={style.item__info__metascore}>
                                 {game.metacritic}
-                            </div>
-                            :
-                            null
+                            </div>   
                         }
-                        
                     </div>
                     <div 
                         className={style.item__info__name} 

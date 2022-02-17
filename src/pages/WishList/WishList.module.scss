@@ -1,0 +1,24 @@
+.container {
+    padding: 1.25rem 5rem;
+}
+h1 {
+    text-align: center;
+}
+.heading {
+    font-size: 4.5rem;
+    line-height: 4.6rem;
+    font-weight: 700;
+    text-align-last: left;
+    margin-bottom: 2rem;
+    &__emptyList {
+        font-size: 2.5rem;
+        line-height: 2.6rem;
+        font-weight: 700;
+        text-align: center;
+    }
+}
+.flex_wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    grid-gap: 1rem;
+}

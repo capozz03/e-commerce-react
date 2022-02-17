@@ -7,7 +7,8 @@ import { setGames,
     fetchError, 
     setFilterGames,
     setSearchGames,
-    toggleIsSearching
+    toggleIsSearching,
+    setStoresGame
 } from "../gamesReducer";
 import { gamesAPI } from "../../api/api";
 
@@ -63,6 +64,21 @@ export const getDetailsGame = (gameSlug) => {
         gamesAPI.getDetailsGame(gameSlug)
             .then(resp => {
                 dispatch(setDetailsGame(resp.data));  
+                dispatch(toggleIsFetching(false));              
+            })
+            .catch(err => {
+                dispatch(fetchError(err.message))
+            })
+    }
+}
+
+export const getStoresGame = (gameSlug) => {
+    return async (dispatch) => {
+
+        dispatch(toggleIsFetching(true));
+        gamesAPI.getStoresGame(gameSlug)
+            .then(resp => {
+                dispatch(setStoresGame(resp.data));  
                 dispatch(toggleIsFetching(false));              
             })
             .catch(err => {

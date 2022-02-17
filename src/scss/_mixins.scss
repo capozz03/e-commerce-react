@@ -1,0 +1,9 @@
+@mixin metascore($metacritic_color: #6dc849) {
+    color: $metacritic_color;
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 0 .3rem;
+    text-align: center;
+    border-radius: 4px;
+    border: 1px solid $metacritic_color;
+}

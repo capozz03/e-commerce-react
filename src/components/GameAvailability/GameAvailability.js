@@ -44,10 +44,6 @@ const GameAvailability = (props) => {
 
     let otherGames = gameAvailabilities.pop();
 
-    const toOtherGame = () => {
-        
-    }
-
     return (
         <div className={style.game__availability}>
             <div className={style.game__availability__flex}>
@@ -75,7 +71,7 @@ const GameAvailability = (props) => {
                                 className={style.game__availability__description__otherGames}
                                 onClick={() => navigate(`/games/${el.slug}`)}
                             >
-                                {el.name}
+                                {el.name};
                             </div>
                         )}  
                     </div>

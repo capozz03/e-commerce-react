@@ -1,0 +1,44 @@
+@import './../../scss/variables';
+
+.game__about {
+    width: 60%;
+    &__flex__item {
+        max-width: 31.5rem;
+    }
+    &__heading {
+        margin: 1rem 0;
+        color: $bg_color;
+        text-transform: uppercase;
+    }
+
+    &__description {
+        position: relative;
+        p {
+            font-size: 1rem;
+            line-height: 1.4rem;
+            margin-bottom: 1.4rem;
+        }
+    }
+}
+
+@media (max-width: 600px){
+    .game__about {
+        &__heading {
+            font-size: .9rem;
+            margin: .7rem 0;
+        }
+        &__description {
+            p {
+                font-size: .8rem;
+                line-height: 1rem;
+                margin-bottom: 1rem;
+            }
+        }
+    }
+}
+
+@media (max-width: 1100px){
+    .game__about {
+        width: 100%;
+    }
+}

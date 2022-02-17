@@ -1,0 +1,14 @@
+@import './../../scss/variables';
+
+.scrollBtn {
+    position: fixed; 
+    width: 100%;
+    left: 95%;
+    bottom: 2.5rem;
+    height: 2.5rem;
+    font-size: 3rem;
+    z-index: 1;
+    cursor: pointer;
+    color: $metacritic_color;
+    transition: all .5s;
+}

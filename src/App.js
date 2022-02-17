@@ -5,6 +5,7 @@ import { useLocation } from 'react-router';
 import AppRouter from './components/AppRouter/AppRouter';
 import { BackgroundContext } from './context';
 import { checkLocalStorageKeys } from './utils/checkLocalStorageKeys';
+import ScrollBtn from './UI/ScrollBtn/ScrollBtn';
 
 function App() {
 
@@ -49,6 +50,7 @@ function App() {
             <AppRouter/>
           </div>
         </div>
+        <ScrollBtn/>
       </div>
     </BackgroundContext.Provider>
  

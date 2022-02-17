@@ -1,3 +1,5 @@
+@import './../../scss/variables';
+
 .game__availability {
     width: 35%;
     margin-bottom: .5rem;
@@ -7,7 +9,7 @@
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-gap: 1rem;
-        color: #151515;
+        color: $bg_color;
         &__item {
             margin-bottom: .6rem;
         }
@@ -15,7 +17,8 @@
     &__heading {
         text-transform: uppercase;
         line-height: .9rem;
-        color: #818181;
+        font-size: .9rem;
+        color: $heading_color;
         margin-bottom: .6rem;
     }
     &__description {
@@ -27,12 +30,30 @@
             text-decoration: underline;
             cursor: pointer;
             &:hover {
-                color: #919191;
+                color: $heading_color_hover;
             }
         }
     }
     &__otherGames {
         margin-top: 1rem;
+    }
+}
+
+@media (max-width: 600px){
+    .game__availability {
+        &__heading {
+            font-size: .8rem;
+            line-height: .8rem;
+        }
+        &__description {
+            line-height: 1rem;
+            font-size: .8rem;
+            &__otherGames {
+                line-height: 1rem;
+                font-size: .8rem;
+            }
+        }
+        
     }
 }
 
@@ -47,7 +68,7 @@
             flex-wrap: wrap;
             justify-content: center;
             align-items: center;
-            color: #151515;
+            color: $bg_color;
             &__item {
                 margin-bottom: .6rem;
                 flex: 40%;
@@ -56,15 +77,3 @@
     }
 }
 
-@media (max-width: 600px){
-    .game__availability {
-        &__heading {
-            font-size: .8rem;
-            line-height: .8rem;
-        }
-        &__description {
-            line-height: 1rem;
-            font-size: .8rem;
-        }
-    }
-}

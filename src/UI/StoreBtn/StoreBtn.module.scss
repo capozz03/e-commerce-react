@@ -1,3 +1,4 @@
+@import './../../scss/variables';
 
 .storeBtn {
     background-image: none;
@@ -9,12 +10,11 @@
     margin-top: 1rem;
     color: #fff;
     border-radius: 6px;
-    background-color: #151515;
-    -webkit-transition: all .3s;
+    background-color: $bg_color;
     transition: all .3s;
     cursor: pointer;
     &:hover {
-        background-color: #333333;
+        background-color: $bg_color_hover;
     }
     &__name {
         font-size: 1rem;

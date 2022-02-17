@@ -1,7 +1,9 @@
-//media
+@import './../../scss/variables';
+@import './../../scss/mixins';
+
 .item {
     border-radius: 12px;
-    background-color: #202020;
+    background-color: $item_color;
     height: 300px;
     width: 15rem;
     overflow: hidden;
@@ -30,16 +32,10 @@
     }
     .item__info {
         padding: .3rem 1rem 1.5rem;
-        color: #fff;
+        color: $white;
         height: 150px;
         &__metascore{
-            color: #6dc849;
-            font-weight: 700;
-            font-size: 1rem;
-            padding: 0 .3rem;
-            text-align: center;
-            border-radius: 4px;
-            border: 1px solid #6dc849;
+            @include metascore($metacritic_color)
         }
         &__name{
             font-size: 1.5rem;
@@ -47,11 +43,11 @@
             padding-top: 1rem;
             transition: .1s ease-in;
             &:hover {
-                color: #818181
+                color: $heading_color
             }
             a {
                 text-decoration: none;
-                color: #fff;
+                color: $white;
             }
         }
     }
@@ -67,17 +63,17 @@
                 justify-content: space-between;
                 align-items: center;
                 padding: .6rem 0;
-                border-bottom: 1px solid #585858;
+                border-bottom: 1px solid $game_card_color;
                 .game__card__about__term {
                     font-size: .75rem;
                     line-height: .75rem;
-                    color: #585858;
+                    color: $game_card_color;
                     text-align: left;
                 }
                 .game__card__about__description {
                     font-size: .75rem;
                     line-height: .75rem;
-                    color: #fff;
+                    color: $white;
                     text-align: right;
                 }
             }

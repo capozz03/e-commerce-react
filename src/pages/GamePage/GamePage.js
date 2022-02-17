@@ -1,51 +1,18 @@
 import React, { useEffect, useContext } from 'react';
 import style from './GamePage.module.scss';
 import { useParams } from 'react-router';
-import { useSelector  } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import Carousel, { CarouselItem } from '../../components/Carousel/Carousel';
-import GameAvailability from './GameAvailability/GameAvailability';
-import { dateTransform } from '../../utils/dateTransform'
+import GameAvailability from '../../components/GameAvailability/GameAvailability';
+import { dateTransform } from '../../utils/dateTransform';
 import WishlistBtn from '../../UI/WishlistBtn/WishlistBtn';
 import { getDetailsGame, getScreenshotsGame, getSameSeries, getStoresGame} from '../../redux/actions/games';
-import { useDispatch } from 'react-redux';
 import { BackgroundContext } from '../../context';
 import Preloader from '../../components/Preloader/Preloader';
 import { iconsStoresTransform} from '../../utils/iconsTransform';
 import StoreBtn from '../../UI/StoreBtn/StoreBtn';
-
-export const GamePageHeader = ({released, playtime, name}) => { 
-    return (
-        <div className={style.game__head}>
-                <div className={style.game__head__flex}>
-                    <div className={style.game__head__meta}> 
-                        <div className={style.game__head__meta__date}>
-                            {dateTransform(released)}
-                        </div>
-                        <div className={style.game__head__meta__playtime}>
-                            Average Playtime: {playtime} hours
-                        </div>
-                    </div>
-                    <h1 className={style.game__head__title}>
-                        {name}
-                    </h1>
-                </div>
-            </div>
-    )
-}
-
-export const GamePageAbout = ({description}) => { 
-    return (
-        <div className={style.game__about}>
-            <h2 className={style.game__about__heading}>
-                About
-            </h2>
-            <div 
-                className={style.game__about__description} 
-                dangerouslySetInnerHTML={{ __html: description }}
-            />
-        </div>
-    )
-}
+import GamePageHeader from '../../components/GamePageHeader/GamePageHeader';
+import GamePageAbout from '../../components/GamePageAbout/GamePageAbout';
 
 export const GamePageRightMenu = ({gameDetails, gameStores}) => { 
 

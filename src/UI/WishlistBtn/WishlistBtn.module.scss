@@ -1,3 +1,5 @@
+@import './../../scss/variables';
+
 .btn {
     display: flex;
     cursor: pointer;
@@ -7,31 +9,31 @@
         display: flex;
         align-items: center;
         color: #fff;
-        background-color: #151515;
-        border: 2px solid #151515;
+        background-color: $bg_color;
+        border: 2px solid $bg_color;
         border-radius: 6px;
         padding: .3rem 0 .3rem 1rem;
         transition: background-color .3s;
         height: 3rem;
         width: 100%;
         &:hover {
-            background-color: #333333;
-            border: 2px solid #333333;
+            background-color: $bg_color_hover;
+            border: 2px solid $bg_color_hover;
         }
         &__clicked {
             display: flex;
             align-items: center;
             color: #fff;
-            background-color: #46b11b;
+            background-color: $wishlist_color;
             border-radius: 6px;
             padding: .3rem 0 .3rem 1rem;
             transition: background-color .3s;
             height: 3rem;
             width: 100%;
-            border: 2px solid #338115;
+            border: 2px solid $wishlist_color_hover;
             &:hover {
-                background-color: #338115;
-                border: 2px solid #338115;
+                background-color: $wishlist_color_hover;
+                border: 2px solid $wishlist_color_hover;
             }
         }
         &__subtitle {

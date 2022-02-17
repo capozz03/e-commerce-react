@@ -1,3 +1,5 @@
+@import './../../scss/variables';
+
 .preloader__container {
     display: flex;
     justify-content: center;
@@ -14,8 +16,8 @@
         height: 64px;
         margin: 8px;
         border-radius: 50%;
-        border: 6px solid #5c5c5c;
-        border-color: #5c5c5c transparent #5c5c5c transparent;
+        border: 6px solid $preloader;
+        border-color: $preloader transparent $preloader transparent;
         animation: lds-dual-ring 1.2s linear infinite;
     }
 }

@@ -1,15 +1,19 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useContext} from 'react';
 import GameList from '../../components/GameList/GameList';
 import style from './WishList.module.scss';
 import { checkLocalStorageKeys } from '../../utils/checkLocalStorageKeys';
+import { BackgroundContext } from '../../context';
 
 const WishList = () => {
+
+    const {updateBgImage} = useContext(BackgroundContext)
 
     const [wishListGames, setWishListGames] = useState([]);
 
     useEffect(() => {
         setWishListGames(checkLocalStorageKeys());
-    }, [])
+        updateBgImage(null)
+    }, [updateBgImage])
 
 
     return (
